@@ -2,19 +2,19 @@
 
 Bot de Telegram que monitorea automáticamente el sitio web de AlertasTransito.com y envía notificaciones inteligentes sobre cortes de tránsito, obras, siniestros viales y operativos de emergencia en Buenos Aires y GBA.
 
-## ✨ Características
+## Características
 
-- 🔍 **Scraping automático** del sitio AlertasTransito.com cada 1.5 horas
-- 🚫 **Anti-spam inteligente**: Solo envía mensajes cuando la información cambia
-- 📱 **Notificaciones por Telegram** con formato limpio y organizado
-- 🎯 **Detección de múltiples tipos de eventos**:
+- **Scraping automático** del sitio AlertasTransito.com cada 1.5 horas
+- **Anti-spam inteligente**: Solo envía mensajes cuando la información cambia
+- **Notificaciones por Telegram** con formato limpio y organizado
+- **Detección de múltiples tipos de eventos**:
   - Cortes por obra
   - Siniestros viales
   - Operativos de bomberos
   - Manifestaciones y piquetes
-- 🧠 **Agrupamiento inteligente** por ubicación geográfica
-- 🔄 **Eliminación automática de duplicados**
-- 🐧 **Compatible con Docker** para fácil despliegue
+- **Agrupamiento inteligente** por ubicación geográfica
+- **Eliminación automática de duplicados**
+- **Compatible con Docker** para fácil despliegue
 
 ## 📋 Requisitos
 
@@ -24,7 +24,7 @@ Bot de Telegram que monitorea automáticamente el sitio web de AlertasTransito.c
 - Conexión a internet
 - Token de bot de Telegram
 
-## 🚀 Instalación
+## Instalación
 
 ### Opción 1: Instalación Local
 
@@ -133,7 +133,7 @@ secciones_validas = [
 📍 Av. Gaona y Joaquín V. Gonzalez - Reducción de calzada
 ```
 
-## 🐛 Solución de Problemas
+## Solución de Problemas
 
 ### El bot no encuentra información
 
@@ -161,7 +161,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## 🔄 Sistema Anti-Spam
+## Sistema Anti-Spam
 
 El bot incluye un sistema inteligente que:
 
@@ -172,36 +172,6 @@ El bot incluye un sistema inteligente que:
 
 Los mensajes se almacenan en `last_message.txt` (excluido del repositorio).
 
-## 📊 Arquitectura
-
-```
-piquete_alerta.py
-├── obtener_fecha_actual()      # Manejo de fechas en español
-├── obtener_pronostico_piquetes() # Web scraping con Selenium
-├── should_send_message()       # Sistema anti-spam
-├── save_last_message()         # Persistencia de mensajes
-├── enviar_alerta_piquetes()    # Envío por Telegram
-└── main()                      # Loop principal
-```
-
-## 🤝 Contribuciones
-
-¡Las contribuciones son bienvenidas! Si encuentras un bug o tienes una mejora:
-
-1. Fork del proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-## 📝 Próximas Mejoras
-
-- [ ] Interfaz web para configuración
-- [ ] Soporte para múltiples ciudades
-- [ ] Integración con más fuentes de información
-- [ ] Notificaciones push web
-- [ ] API REST para consultas
-- [ ] Dashboard de estadísticas
 
 ## ⚠️ Limitaciones
 
@@ -210,14 +180,15 @@ piquete_alerta.py
 - Límite de 4096 caracteres por mensaje de Telegram
 - Intervalo mínimo recomendado: 30 minutos (para no sobrecargar el sitio)
 
-## 🙏 Agradecimientos
+## Agradecimientos
 
 - [AlertasTransito.com](https://www.alertastransito.com) por proporcionar información pública
 - Comunidad de Python y Selenium
 - Telegram Bot API
 
-## 📞 Contacto
+## Creditos
 
+- Desarrollado por Agustin Monetti.
 - GitHub: [@agmonetti](https://github.com/agmonetti)
 - Email: agmonetti@uade.edu.ar
 

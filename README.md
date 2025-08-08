@@ -210,10 +210,6 @@ piquete_alerta.py
 - Límite de 4096 caracteres por mensaje de Telegram
 - Intervalo mínimo recomendado: 30 minutos (para no sobrecargar el sitio)
 
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
-
 ## 🙏 Agradecimientos
 
 - [AlertasTransito.com](https://www.alertastransito.com) por proporcionar información pública
@@ -222,38 +218,7 @@ Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
 
 ## 📞 Contacto
 
-- GitHub: [@tu-usuario](https://github.com/tu-usuario)
-- Email: tu-email@ejemplo.com
+- GitHub: [@agmonetti](https://github.com/agmonetti)
+- Email: agmonetti@uade.edu.ar
 
 ---
-
-**⭐ Si este proyecto te ayuda, considera darle una estrella en GitHub!**
-
-## 🔧 Para Desarrolladores
-
-### Estructura del Proyecto
-```
-BotPiquetes/
-├── piquete_alerta.py       # Script principal
-├── requirements.txt        # Dependencias
-├── Dockerfile             # Contenedor Docker
-├── README.md              # Documentación
-├── .gitignore            # Archivos excluidos
-└── last_message.txt      # Cache de mensajes (auto-generado)
-```
-
-### Debug Mode
-
-Para desarrollo, puedes comentar el envío de Telegram y solo ver los mensajes:
-
-```python
-# En enviar_alerta_piquetes(), las líneas de Telegram están comentadas
-# Solo se muestra el mensaje en terminal para debugging
-```
-
-### Tests
-
-```bash
-# Ejecutar una vez para testing
-python -c "from piquete_alerta import verificar_piquetes; verificar_piquetes()"
-```

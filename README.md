@@ -30,29 +30,26 @@ Bot de Telegram que monitorea automáticamente el sitio web de AlertasTransito.c
 
 1. **Clona el repositorio**:
 ```bash
-git clone https://github.com/tu-usuario/BotPiquetes.git
-cd BotPiquetes
+git clone https://github.com/tu-usuario/Bot-Trafico-Argentina.git
+cd Bot-Trafico-Argentina
 ```
 
-2. **Crea un entorno virtual**:
+2. **Configura las variables de entorno**:
 ```bash
-python3 -m venv venv
-source venv/bin/activate  # En Linux/Mac
-# venv\Scripts\activate   # En Windows
+# Copia el template
+cp .env.template .env
+
+# Edita .env con tus tokens reales
+# TELEGRAM_TOKEN=tu_token_real
+# TELEGRAM_CHAT_ID=tu_chat_id_real
 ```
 
-3. **Instala las dependencias**:
+3. **Instala dependencias**:
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Configura las variables de entorno**:
-```bash
-export TELEGRAM_TOKEN="tu_token_aqui"
-export TELEGRAM_CHAT_ID="tu_chat_id_aqui"
-```
-
-5. **Ejecuta el bot**:
+4. **Ejecuta el bot**:
 ```bash
 python piquete_alerta.py
 ```

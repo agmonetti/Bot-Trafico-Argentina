@@ -29,8 +29,9 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar solo el archivo del bot de piquetes
+# Copiar el archivo del bot de piquetes y el archivo .env
 COPY piquete_alerta.py .
+COPY .env .
 
 # Comando específico para el bot de piquetes
 CMD ["python", "piquete_alerta.py"]

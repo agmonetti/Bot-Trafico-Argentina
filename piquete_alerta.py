@@ -9,6 +9,14 @@ from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime, date
 import re
 
+# Cargar variables de entorno desde .env
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+    print("✅ Variables de entorno cargadas desde .env")
+except ImportError:
+    print("⚠️ python-dotenv no instalado. Usando variables de entorno del sistema.")
+
 # ========================
 # CONFIGURACIÓN
 # ========================
@@ -16,6 +24,14 @@ TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN', '')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID', '')
 URL_PIQUETES = 'https://www.alertastransito.com/p/pronostico-de-piquetes.html'
 INTERVALO_EJECUCION = 5400  # 1:30 hora en segundos
+
+# Verificar que las variables estén configuradas
+if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
+    print("❌ ERROR: TELEGRAM_TOKEN y TELEGRAM_CHAT_ID deben estar configurados")
+    print(f"TELEGRAM_TOKEN configurado: {'✅' if TELEGRAM_TOKEN else '❌'}")
+    print(f"TELEGRAM_CHAT_ID configurado: {'✅' if TELEGRAM_CHAT_ID else '❌'}")
+else:
+    print("✅ Variables de Telegram configuradas correctamente")
 
 def obtener_fecha_actual():
     """
@@ -378,32 +394,29 @@ def enviar_alerta_piquetes(piquetes_info):
         print(f"📊 Longitud del mensaje: {len(mensaje)} caracteres")
         
         # Código original de Telegram (comentado temporalmente)
-        # url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-        # 
-        # # Enviar mensaje sin formato especial para evitar errores
-        # data = {
-        #     "chat_id": TELEGRAM_CHAT_ID,
-        #     "text": mensaje
-        # }
-        # 
-        # try:
-        #     response = requests.post(url, data=data, timeout=30)
-        #     
-        #     if response.status_code == 200:
-        #         print("📤 Alerta de tránsito enviada por Telegram")
-        #         print(f"Mensaje enviado: {mensaje[:200]}...")
-        #         # Guardar mensaje después de enviarlo exitosamente
-        #         save_last_message(mensaje)
-        #     else:
-        #         print(f"❌ Error al enviar mensaje: {response.status_code}")
-        #         print(f"Respuesta: {response.text}")
-        #             
-        # except Exception as e:
-        #     print(f"❌ Error enviando alerta: {e}")
+        url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
         
-        # Por ahora solo guardamos el mensaje (no enviamos por Telegram)
-        save_last_message(mensaje)
-        print("📤 Mensaje preparado y guardado para próxima comparación")
+        # Enviar mensaje sin formato especial para evitar errores
+        data = {
+            "chat_id": TELEGRAM_CHAT_ID,
+            "text": mensaje
+        }
+        
+        try:
+            response = requests.post(url, data=data, timeout=30)
+            
+            if response.status_code == 200:
+                print("📤 Alerta de tránsito enviada por Telegram")
+                print(f"Mensaje enviado: {mensaje[:200]}...")
+                # Guardar mensaje después de enviarlo exitosamente
+                save_last_message(mensaje)
+            else:
+                print(f"❌ Error al enviar mensaje: {response.status_code}")
+                print(f"Respuesta: {response.text}")
+                    
+        except Exception as e:
+            print(f"❌ Error enviando alerta: {e}")
+        
     else:
         print("🔄 Mensaje idéntico al anterior - omitiendo envío para evitar spam")
         print("📝 Tip: Solo se enviarán mensajes cuando la información de tránsito cambie")

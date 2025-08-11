@@ -190,3 +190,5 @@ Los mensajes se almacenan en `last_message.txt` (excluido del repositorio).
 - Email: agmonetti@uade.edu.ar
 
 ---
+
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)

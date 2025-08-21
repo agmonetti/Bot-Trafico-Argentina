@@ -75,43 +75,8 @@ docker run -e TELEGRAM_TOKEN="tu_token" -e TELEGRAM_CHAT_ID="tu_chat_id" bot-piq
 | `TELEGRAM_TOKEN` | Token del bot de Telegram | `123456789:ABCdefGHIjklMNOpqrsTUVwxyz` |
 | `TELEGRAM_CHAT_ID` | ID del chat donde enviar mensajes | `123456789` |
 
-### Obtener Token de Telegram
 
-1. Habla con [@BotFather](https://t.me/BotFather) en Telegram
-2. Crea un nuevo bot con `/newbot`
-3. Copia el token que te proporciona
-4. Para obtener el Chat ID, envía un mensaje a tu bot y visita:
-   ```
-   https://api.telegram.org/bot<TU_TOKEN>/getUpdates
-   ```
 
-## 🔧 Personalización
-
-### Modificar Intervalo de Ejecución
-
-Edita la variable `INTERVALO_EJECUCION` en `piquete_alerta.py`:
-
-```python
-INTERVALO_EJECUCION = 5400  # 1.5 horas en segundos
-# INTERVALO_EJECUCION = 3600  # 1 hora
-# INTERVALO_EJECUCION = 1800  # 30 minutos
-```
-
-### Agregar Nuevas Secciones
-
-Modifica la lista `secciones_validas` para detectar nuevos tipos de eventos:
-
-```python
-secciones_validas = [
-    'MANIFESTACIONES', 
-    'CORTE POR OBRA', 
-    'SINIESTROS VIALES', 
-    'EVENTOS DEPORTIVOS', 
-    'OBRAS',
-    'OPERATIVO DE BOMBEROS',
-    'TU_NUEVA_SECCION'  # Agrega aquí
-]
-```
 
 ## 📱 Ejemplo de Mensaje
 
@@ -130,33 +95,7 @@ secciones_validas = [
 📍 Av. Gaona y Joaquín V. Gonzalez - Reducción de calzada
 ```
 
-## Solución de Problemas
 
-### El bot no encuentra información
-
-- Verifica que la fecha del sistema sea correcta
-- El sitio web puede haber cambiado su estructura
-- Revisa los logs para ver qué secciones se detectaron
-
-### Error de ChromeDriver
-
-```bash
-# Ubuntu/Debian
-sudo apt-get update
-sudo apt-get install chromium-browser chromium-chromedriver
-
-# Arch Linux
-sudo pacman -S chromium chromedriver
-```
-
-### Error de permisos con pip
-
-Usa un entorno virtual en lugar de instalación global:
-```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
 
 ## Sistema Anti-Spam
 
@@ -168,14 +107,6 @@ El bot incluye un sistema inteligente que:
 - ✅ Evita notificaciones duplicadas
 
 Los mensajes se almacenan en `last_message.txt` (excluido del repositorio).
-
-
-## ⚠️ Limitaciones
-
-- Depende de la estructura HTML del sitio AlertasTransito.com
-- Requiere Chrome/Chromium instalado
-- Límite de 4096 caracteres por mensaje de Telegram
-- Intervalo mínimo recomendado: 30 minutos (para no sobrecargar el sitio)
 
 ## Agradecimientos
 
